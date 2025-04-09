@@ -1,6 +1,6 @@
 include_guard(GLOBAL)
 
-set(sel4_cmake_path "${CMAKE_CURRENT_LIST_DIR}")
+set(sel4_cmake_path "${CMAKE_CURRENT_LIST_DIR}/..")
 
 macro(include_sel4_configuration config_path)
     include("${sel4_cmake_path}/configs/${config_path}.cmake")
@@ -8,7 +8,7 @@ endmacro()
 
 macro(finalize_sel4_configuration)
     include(${sel4_cmake_path}/settings.cmake)
-    add_subdirectory(${sel4_cmake_path}/sel4_core_setup)
+    add_subdirectory(${sel4_cmake_path}/sel4-wrapper)
     include(rootserver)
 endmacro()
 

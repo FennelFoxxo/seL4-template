@@ -1,14 +1,14 @@
 # musllibc sets a lot of global compilation and link flags that are needed when building a project to run on seL4,
 # but will break normal compilation of projects (e.g. a C project that runs on the host machine to generate files).
-# By moving the core seL4 compilation into its own CMakeLists.txt, we can call add_subdirectory which will not bring
+# By wrapping the core seL4 compilation in its own CMakeLists.txt, we can call add_subdirectory which will not bring
 # variables or compiler flags into the parent scope, but it will make targets visible. Projects linking with sel4muslcsys
 # will pick up on these flags, or alternatively projects can link with sel4muslcsys_flags to only pick up on the flags
 # without linking with the entirety of sel4muslcsys
 
 cmake_minimum_required(VERSION 3.16.0)
-project(sel4_core)
+project(sel4_wrapper)
 
-include(${PROJECT_SOURCE_DIR}/../settings.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/../settings.cmake)
 
 find_package(seL4 REQUIRED)
 find_package(elfloader-tool REQUIRED)
