@@ -4,7 +4,7 @@ A template for building projects on the seL4 microkernel
 # Compiling
 ```
 git clone --recurse-submodules https://github.com/FennelFoxxo/seL4-template.git
-cd Fennec
+cd seL4-template
 sudo ./setup
 make
 ```
